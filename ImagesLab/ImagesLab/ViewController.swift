@@ -22,7 +22,18 @@ class ViewController: UIViewController {
         }
     }
     
+    var comicNum = 0 {
+        didSet {
+            loadData()
+        }
+    }
+    
    
+    func changeComicNum(){
+        comicNum += Int(stepperOut.value)
+    }
+    
+    
     
     @IBOutlet weak var comicView: UIImageView!
     
@@ -56,7 +67,7 @@ class ViewController: UIViewController {
 
     
     private func loadData() {
-        Comic.getComic { (result) in
+        Comic.getComic(comicNum: nil ) { (result) in
             DispatchQueue.main.async {
                 
                 switch result {
@@ -68,6 +79,9 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
+    
     
     override func viewDidLoad() {
         loadData()

@@ -14,8 +14,14 @@ struct Comic: Codable {
     let img: String
 
 
-    static func getComic(completionHandler: @escaping (Result<Comic, AppError>) -> ()){
-        let url = "https://xkcd.com/info.0.json"
+    static func getComic(comicNum: Int?, completionHandler: @escaping (Result<Comic, AppError>) -> ()){
+        
+        var url = "http://xkcd.com/info.0.json"
+        
+        if let comicNum = comicNum {
+            url = "http://xkcd.com/\(comicNum)/info.0.json"
+        }
+        
         NetworkManager.shared.fetchData(urlString: url) { (result) in
             switch result {
             case .failure(let error):
