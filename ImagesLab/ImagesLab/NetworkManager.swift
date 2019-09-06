@@ -1,5 +1,4 @@
 import Foundation
-
 class NetworkManager {
     
     // TODO: update this to cache

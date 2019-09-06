@@ -1,8 +1,8 @@
 //
 //  AppError.swift
-//  breweryProject
+//  concertDatesProject
 //
-//  Created by Sam Roman on 9/5/19.
+//  Created by Sam Roman on 9/6/19.
 //  Copyright © 2019 Sam Roman. All rights reserved.
 //
 
@@ -19,5 +19,6 @@ enum AppError: Error {
     case badImageData
     case other(errorDescription: String)
 }
+
 
 

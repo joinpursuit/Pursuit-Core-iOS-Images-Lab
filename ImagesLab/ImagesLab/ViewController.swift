@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var comicImage: UIImage? {
+        didSet {
+            comicView.image = self.comicImage
+        }
+    }
+    
+    var comic: Comic! {
+        didSet {
+            loadImage()
+        }
+    }
+    
+   
     
     @IBOutlet weak var comicView: UIImageView!
     
@@ -27,15 +40,43 @@ class ViewController: UIViewController {
     @IBAction func randomButton(_ sender: Any) {
     }
     
+    private func loadImage(){
+        ImageHelper.shared.fetchImage(urlString: comic?.img ?? "") { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let image):
+                self.comicImage = image
+                }
+
+            }
+        }
+    }
+
     
-    
-    
+    private func loadData() {
+        Comic.getComic { (result) in
+            DispatchQueue.main.async {
+                
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let comicInfo):
+                    self.comic = comicInfo
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
-        
+        loadData()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    
+
 
 
 }
