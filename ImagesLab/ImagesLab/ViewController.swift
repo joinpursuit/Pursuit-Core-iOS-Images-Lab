@@ -10,47 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var comicImage: UIImage? {
-        didSet {
-            comicView.image = self.comicImage
-        }
-    }
-    
     var comic: Comic! {
         didSet {
             loadImage()
-        }
+}
     }
-    
-    var comicNum = 0 {
+    var comicImage: UIImage? {
         didSet {
-            loadData()
+            comicView.image = self.comicImage
+            comicNumLabel.text = "# \(comic.num)"
+            
         }
     }
+    //MARK: - Outlets and Actions
     
-   
-    func changeComicNum(){
-        comicNum += Int(stepperOut.value)
-    }
-    
-    
-    
+    @IBOutlet weak var comicNumLabel: UILabel!
     @IBOutlet weak var comicView: UIImageView!
-    
-    
     @IBOutlet weak var stepperOut: UIStepper!
-    
-    
     @IBOutlet weak var textFieldOut: UITextField!
     
-    
+    @IBAction func stepperAct(_ sender: UIStepper) {
+        loadData(comicNum: Int(sender.value))
+    }
     @IBAction func mostRecentButton(_ sender: Any) {
+        loadData(comicNum: nil)
     }
-    
-    
     @IBAction func randomButton(_ sender: Any) {
+        let random = Int.random(in: 1...2199)
+        stepperOut.value = Double( random)
+        loadData(comicNum: random)
     }
-    
+    //MARK: - Network Methods
     private func loadImage(){
         ImageHelper.shared.fetchImage(urlString: comic?.img ?? "") { (result) in
             DispatchQueue.main.async {
@@ -64,10 +54,8 @@ class ViewController: UIViewController {
             }
         }
     }
-
-    
-    private func loadData() {
-        Comic.getComic(comicNum: nil ) { (result) in
+    private func loadData(comicNum: Int? ) {
+        Comic.getComic(comicNum: comicNum ) { (result) in
             DispatchQueue.main.async {
                 
                 switch result {
@@ -79,19 +67,27 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
+    private func setUp(){
+        let random = Int.random(in: 1...2199)
+        stepperOut.value = Double( random)
+        loadData(comicNum: random)
+    }
+    //MARK: Lifecycle Methods
     override func viewDidLoad() {
-        loadData()
+        setUp()
+        textFieldOut.delegate = self
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
-    
-
-
-
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let userInput = Int((textField.text)!){
+            loadData(comicNum: userInput)
+            stepperOut.value = Double(userInput)
+            return true
+        }
+        return false
+    }
+}
