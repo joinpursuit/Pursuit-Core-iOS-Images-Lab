@@ -36,8 +36,16 @@ struct Pokemon: Codable{
     let set: String?
     let weaknesses: [Weakness]?
     
+//    mutating func allTypes() -> String {
+//        var typeStr = ""
+//        if let types = types {
+//
+//    }
+    
     
 }
+
+
 
 
 struct Weakness: Codable {

@@ -10,15 +10,36 @@ import UIKit
 
 class PokemonViewController: UITableViewController {
     
-    var pokemonCards: [Pokemon]! {
+    var pokemonCards = [Pokemon]() {
         didSet {
             tableView.reloadData()
         }
     }
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchString: String? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var searchResults: [Pokemon]{
+        get {
+            guard let searchString = searchString else {
+                return pokemonCards
+                
+            }
+            guard searchString != "" else {
+                return pokemonCards
+            }
+            return pokemonCards.filter{$0.name.contains(searchString)}
+            
+        }
+    }
 
     override func viewDidLoad() {
         loadPoke()
+        searchBar.delegate = self
         super.viewDidLoad()
 
  
@@ -45,17 +66,18 @@ class PokemonViewController: UITableViewController {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 150
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if pokemonCards != nil {
-        return pokemonCards.count
-        } else { return 0 }
+       return searchResults.count
     }
-        
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var currentPoke = pokemonCards[indexPath.row]
+        let currentPoke = searchResults[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokeCell", for: indexPath) as! PokeCell
         ImageHelper.shared.fetchImage(urlString: currentPoke.imageUrl) { (result) in
             DispatchQueue.main.async {
@@ -73,49 +95,38 @@ class PokemonViewController: UITableViewController {
     }
  
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let segueIdentifier = segue.identifier else {
+            fatalError("No identifier in segue")
+        }
+        switch segueIdentifier {
+        case "pokeSegue":
+            guard let detailVC = segue.destination as? PokeDetailVCViewController
+                else {
+                    fatalError("Unexpected segue")}
+            guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
+                fatalError("No row selected")
+            }
+            detailVC.selectedPoke = searchResults[selectedIndexPath.row]
+        default:
+            fatalError("Unexpected segue identifier")
+        }
     }
-    */
+    
 
 }
+
+extension PokemonViewController: UISearchBarDelegate {
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchString = searchBar.text
+    }
+    
+}
+
