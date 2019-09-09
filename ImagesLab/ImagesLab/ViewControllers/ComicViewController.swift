@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ComicViewController: UIViewController {
 
     var comic: Comic! {
         didSet {
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITextFieldDelegate {
+extension ComicViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let userInput = Int((textField.text)!){
             loadData(comicNum: userInput)
