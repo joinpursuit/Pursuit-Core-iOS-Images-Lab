@@ -24,20 +24,6 @@ class PokemonViewController: UITableViewController {
  
     }
     
-//    private func loadImage(){
-//        ImageHelper.shared.fetchImage(urlString: ) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .failure(let error):
-//                    print(error)
-//                case .success(let image):
-//                    cell.p = image
-//                }
-//
-//            }
-//        }
-//    }
-    
     private func loadPoke(){
         Cards.loadPoke { (result) in
             DispatchQueue.main.async {

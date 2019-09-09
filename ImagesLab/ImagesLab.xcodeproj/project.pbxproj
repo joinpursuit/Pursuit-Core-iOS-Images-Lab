@@ -21,6 +21,7 @@
 		3A95F45C2325C95E00D0EDE1 /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A95F45B2325C95E00D0EDE1 /* PokemonViewController.swift */; };
 		3A95F4612325C9B200D0EDE1 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A95F4602325C9B200D0EDE1 /* PokemonModel.swift */; };
 		3A95F4632325C9EB00D0EDE1 /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A95F4622325C9EB00D0EDE1 /* PokeCell.swift */; };
+		3A95F465232685CE00D0EDE1 /* PokeDetailVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A95F464232685CE00D0EDE1 /* PokeDetailVCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		3A95F45B2325C95E00D0EDE1 /* PokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
 		3A95F4602325C9B200D0EDE1 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		3A95F4622325C9EB00D0EDE1 /* PokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
+		3A95F464232685CE00D0EDE1 /* PokeDetailVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDetailVCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				3A95F45E2325C98D00D0EDE1 /* Managers */,
 				3A95F45F2325C99A00D0EDE1 /* Models */,
 				3A95F3DF2321946A00D0EDE1 /* Main.storyboard */,
+				3A95F464232685CE00D0EDE1 /* PokeDetailVCViewController.swift */,
 				3A95F3E22321946B00D0EDE1 /* Assets.xcassets */,
 				3A95F3E42321946B00D0EDE1 /* LaunchScreen.storyboard */,
 				3A95F3E72321946B00D0EDE1 /* Info.plist */,
@@ -307,6 +310,7 @@
 				3A95F45C2325C95E00D0EDE1 /* PokemonViewController.swift in Sources */,
 				3A95F3DE2321946A00D0EDE1 /* ComicViewController.swift in Sources */,
 				3A95F3DC2321946A00D0EDE1 /* AppDelegate.swift in Sources */,
+				3A95F465232685CE00D0EDE1 /* PokeDetailVCViewController.swift in Sources */,
 				3A95F4632325C9EB00D0EDE1 /* PokeCell.swift in Sources */,
 				3A95F412232197E600D0EDE1 /* ComicModel.swift in Sources */,
 				3A95F4612325C9B200D0EDE1 /* PokemonModel.swift in Sources */,
