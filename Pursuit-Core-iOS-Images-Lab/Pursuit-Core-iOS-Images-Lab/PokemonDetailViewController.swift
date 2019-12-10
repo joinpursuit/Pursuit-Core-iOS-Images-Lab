@@ -11,22 +11,35 @@ import UIKit
 class PokemonDetailViewController: UIViewController {
     
     var passedPokeman:Pokemon?
+    
+    @IBOutlet weak var imageView:UIImageView!
+    @IBOutlet weak var label:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateUI(){
+        guard let pokemon = passedPokeman else {
+            fatalError("Check prepare(for: segue)")
+        }
+        imageView.getImage(with: pokemon.imageUrlHiRes) {[weak self](result) in
+            switch result{
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+                }
+            case .success(let image):
+                DispatchQueue.main.async {
+                    //if self?.passedPokeman?.imageUrl == pokemon.imageUrl{
+                        self?.imageView.image = image
+                    //}
+                }
+            }
+        }
+        label.text = "Name: \(pokemon.name)\nType: \(pokemon.types?.first ?? "N/A")\nWeaknesses:\n\tType:  \(pokemon.weaknesses?.first?.type ?? "N/A")\n\tValue: \(pokemon.weaknesses?.first?.value ?? "N/A")\nSet: \(pokemon.set)"
     }
-    */
-
 }

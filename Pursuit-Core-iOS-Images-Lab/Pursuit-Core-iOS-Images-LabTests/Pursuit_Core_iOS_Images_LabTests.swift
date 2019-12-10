@@ -19,16 +19,48 @@ class Pursuit_Core_iOS_Images_LabTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testEndPoint2() {
+        //arrange
+        //make this string url friendly
+        let endPointString = "https://api.pokemontcg.io/v1/cards"
+        let exp = XCTestExpectation(description: "searches found")
+        
+        //act
+        NetworkHelper.shared.performDataTask(with: endPointString) { (result) in
+            switch result{
+            case .failure(let appError):
+                XCTFail("App Err: \(appError)")
+            case .success(let data):
+                exp.fulfill()
+                //assert
+                XCTAssertGreaterThan(data.count, 60000, "Data should be greater than \(data.count)")
+            }
         }
+        wait(for: [exp], timeout: 5.0)
     }
+    
+    func testVC2SearchFunc(){
+        //arrange
+        var pokemons = [Pokemon]()
+        let endPointString = "https://api.pokemontcg.io/v1/cards"
+        let exp = XCTestExpectation(description: "searches found")
+        PokemonAPI.getCards(endPointURLString: endPointString, completion: { (result) in
+            switch result{
+            case .failure(let appArror):
+                fatalError("Error: \(appArror)")
+            case .success(let data):
+                pokemons = data
+            }
+        })
+        wait(for: [exp], timeout: 10.0)
 
+        
+        let expectedCountOfPokemons = 19
+        
+        //act
+        let countOfPokemons = pokemons.filter{$0.name.lowercased().contains("H".lowercased())}.count
+        //assert
+        XCTAssertEqual(expectedCountOfPokemons, countOfPokemons, "Expected \(expectedCountOfPokemons) pokemons, instead of \(countOfPokemons)")
+
+    }
 }
