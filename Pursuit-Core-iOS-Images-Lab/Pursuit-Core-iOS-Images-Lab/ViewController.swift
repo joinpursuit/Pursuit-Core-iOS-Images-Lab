@@ -23,18 +23,21 @@ class ViewController: UIViewController {
         delegations()
         configureStepper()
         updateUI()
+        comics.img = "https://www.maropost.com/wp-content/uploads/2019/06/The-Welcome-Email_06042019-01.jpg"
+        loadData()
     }
     
     var comicValue:String? = "1"{
         didSet{
             updateUI()
+            loadData()
         }
     }
     
     var maxComicValue = 2239
-    
     var comics = Comic(num: 1, img: "")
-    
+
+
     func updateUI(){
         guard let validComicValue = comicValue else { fatalError("Could not load in comicValue")
         }
@@ -42,12 +45,16 @@ class ViewController: UIViewController {
         ComicAPI.getComics(endPointURLString: "https://xkcd.com/\(validComicValue)/info.0.json") { (result) in
             switch result{
             case .failure(let appError):
+                print("succ1")
                 fatalError("Error: \(appError)")
             case .success(let comics):
                 self.comics = comics
+                print("fail1")
             }
         }
-        
+    }
+    
+    func loadData(){
         NetworkHelper.shared.performDataTask(with: comics.img) { (result) in
             switch result{
             case .failure(let appError):
@@ -58,11 +65,11 @@ class ViewController: UIViewController {
                 }
             }
         }
-
     }
     
     func delegations(){
         textField.delegate = self
+        textField.placeholder = "Enter an comic book value"
     }
     
     func configureStepper(){
