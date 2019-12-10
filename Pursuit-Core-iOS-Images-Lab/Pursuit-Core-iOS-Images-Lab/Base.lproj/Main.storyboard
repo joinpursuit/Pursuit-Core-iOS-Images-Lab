@@ -18,36 +18,57 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LlN-Tf-puo">
                                 <rect key="frame" x="20" y="64" width="374" height="313.5"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJ0-1a-y4i">
-                                <rect key="frame" x="20" y="431" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJ0-1a-y4i">
+                                <rect key="frame" x="20" y="417.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoT-Aw-jTa">
-                                <rect key="frame" x="67" y="751" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Most Recent"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atd-tL-9iB">
-                                <rect key="frame" x="276" y="751" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atd-tL-9iB">
+                                <rect key="frame" x="337" y="491.5" width="57" height="30"/>
                                 <state key="normal" title="Random"/>
+                                <connections>
+                                    <action selector="randomButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yku-ae-3OD"/>
+                                </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="0H0-3r-m2r">
-                                <rect key="frame" x="160" y="583" width="94" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="0H0-3r-m2r">
+                                <rect key="frame" x="160" y="490.5" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperValChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ufg-6B-Wqw"/>
+                                </connections>
                             </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoT-Aw-jTa">
+                                <rect key="frame" x="20" y="491.5" width="87" height="30"/>
+                                <state key="normal" title="Most Recent"/>
+                                <connections>
+                                    <action selector="mostRecentButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d3i-XU-hL2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="wJ0-1a-y4i" firstAttribute="top" secondItem="LlN-Tf-puo" secondAttribute="bottom" constant="40" id="FpA-QC-Ytc"/>
+                            <constraint firstItem="AoT-Aw-jTa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IKe-6g-h49"/>
+                            <constraint firstItem="0H0-3r-m2r" firstAttribute="centerX" secondItem="wJ0-1a-y4i" secondAttribute="centerX" id="KQd-aJ-fnQ"/>
+                            <constraint firstItem="Atd-tL-9iB" firstAttribute="centerY" secondItem="0H0-3r-m2r" secondAttribute="centerY" id="MKJ-Oz-tWB"/>
+                            <constraint firstItem="AoT-Aw-jTa" firstAttribute="top" secondItem="wJ0-1a-y4i" secondAttribute="bottom" constant="40" id="MYx-jh-Xut"/>
                             <constraint firstItem="LlN-Tf-puo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Mxa-Ri-Z8e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wJ0-1a-y4i" secondAttribute="trailing" constant="20" id="S6r-m6-98a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Atd-tL-9iB" secondAttribute="trailing" constant="20" id="VIG-vc-SvV"/>
+                            <constraint firstItem="0H0-3r-m2r" firstAttribute="centerY" secondItem="AoT-Aw-jTa" secondAttribute="centerY" id="ad4-b0-l8D"/>
                             <constraint firstItem="LlN-Tf-puo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.35" id="dzR-7w-Iz2"/>
+                            <constraint firstItem="wJ0-1a-y4i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gOs-ZE-X0t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LlN-Tf-puo" secondAttribute="trailing" constant="20" id="kz9-iM-xp5"/>
                             <constraint firstItem="LlN-Tf-puo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pnE-yX-5ZA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="LlN-Tf-puo" id="YDe-WY-To1"/>
+                        <outlet property="mostRecentButton" destination="AoT-Aw-jTa" id="Cl3-Bm-yHB"/>
+                        <outlet property="randomButton" destination="Atd-tL-9iB" id="D5w-JX-mjL"/>
+                        <outlet property="stepper" destination="0H0-3r-m2r" id="eXP-Ts-coH"/>
+                        <outlet property="textField" destination="wJ0-1a-y4i" id="ysJ-V3-T7w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

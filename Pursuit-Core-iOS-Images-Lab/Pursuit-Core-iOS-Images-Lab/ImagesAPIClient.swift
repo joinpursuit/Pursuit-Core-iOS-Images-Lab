@@ -9,8 +9,8 @@
 import Foundation
 
 struct ComicAPI{
-    static func getComics(endPointURLString: String, completion: @escaping (Result<Comic,AppError>)->()) -> Comic{
-        let comics = Comic(month: "", num: 0, year: "", title: "", transcript: "", img: "", day: "")
+    static func getComics(endPointURLString: String, completion: @escaping (Result<Comic,AppError>)->()){
+        //var comics = Comic(month: "", num: 1, year: "", title: "", transcript: "", img: "", day: "")
         NetworkHelper.shared.performDataTask(with: endPointURLString) { (result) in
             switch result{
             case .failure(let appError):
@@ -24,6 +24,6 @@ struct ComicAPI{
                 }
             }
         }
-        return comics
+        //return comics
     }
 }
