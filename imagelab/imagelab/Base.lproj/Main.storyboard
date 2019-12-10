@@ -20,6 +20,9 @@
                             </imageView>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="l6t-av-PCw">
                                 <rect key="frame" x="160" y="436.5" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="qVZ-jO-207"/>
+                                </connections>
                             </stepper>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter num.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHM-L5-9uM">
                                 <rect key="frame" x="156" y="476" width="102" height="34"/>
@@ -63,7 +66,7 @@
                     <tabBarItem key="tabBarItem" title="xkcd" id="73U-hO-3cJ"/>
                     <connections>
                         <outlet property="imageView" destination="gZw-dR-9GV" id="XFj-Bt-Etl"/>
-                        <outlet property="stepper" destination="l6t-av-PCw" id="Aai-nv-zMx"/>
+                        <outlet property="stepper" destination="l6t-av-PCw" id="tdN-65-H39"/>
                         <outlet property="textField" destination="PHM-L5-9uM" id="ADm-Gn-DN5"/>
                     </connections>
                 </viewController>

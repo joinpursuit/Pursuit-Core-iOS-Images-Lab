@@ -9,17 +9,16 @@
 import UIKit
 
 extension UIImage {
-    static func imageMade(urlString: String) -> UIImage {
-        guard let url = URL(string: urlString) else { fatalError("badURL")}
-        var image: UIImage?
-        NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) { (result) in
+    static func getImage(urlString: String, completionHandler: @escaping (Result<UIImage, AppError>) -> ()){
+        
+        NetworkHelper.shared.performDataTask(with: urlString) { (result) in
             switch result {
             case.failure(let error):
-                print(error)
+                completionHandler(.failure(.networkClientError(error)))
             case .success(let data):
-                image = UIImage(data: data)
+                guard let image = UIImage(data: data) else {fatalError("badData")}
+                completionHandler(.success(image))
             }
         }
-        return image!
     }
 }
