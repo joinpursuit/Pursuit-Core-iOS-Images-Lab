@@ -45,3 +45,22 @@ struct PokemonAPI {
         }
     }
 }
+
+struct UsersAPI {
+    static func getUsers(endPointURLString:String, completion: @escaping (Result<[User], AppError>) -> ()){
+        NetworkHelper.shared.performDataTask(with: endPointURLString) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                do{
+                    let usersData = try JSONDecoder().decode(UserData.self, from: data)
+                    let user = usersData.results
+                    completion(.success(user))
+                } catch{
+                completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+}
