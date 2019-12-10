@@ -9,6 +9,9 @@
 import UIKit
 
 class XKCDComicViewController: UIViewController {
+    
+    let xkcdComic = XKCDComic.getXKCDComic()
+    lazy var comicRange = 0...xkcdComic.num
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
@@ -17,12 +20,13 @@ class XKCDComicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func randomButtonPressed(_ sender: UIButton) {
     }
-    @IBAction func mostRecentButtonPressed(_ sender: Any) {
-    }
     
+    @IBAction func mostRecentButtonPressed(_ sender: UIButton) {
+    }
 }
 

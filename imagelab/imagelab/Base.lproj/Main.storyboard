@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="518" width="186.5" height="30"/>
                                 <state key="normal" title="Most Recent"/>
                                 <connections>
-                                    <action selector="mostRecentButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QfN-hh-5RQ"/>
+                                    <action selector="mostRecentButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9w6-DD-Sfy"/>
                                 </connections>
                             </button>
                         </subviews>
