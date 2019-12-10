@@ -21,9 +21,20 @@ class PokemonViewController: UIViewController {
         }
     }
     
+    private var filteredPokemonCards: [PokemonCard] {
+        guard let query = searchQuery else { return pokemonCards }
+        return query == "" ? pokemonCards : pokemonCards.filter{$0.name.lowercased().contains(query.lowercased())}
+    }
+    
+    private var searchQuery: String? = nil {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureViews()
         // Do any additional setup after loading the view.
     }
     
@@ -45,14 +56,15 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    private func configureTableView() {
+    private func configureViews() {
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? PokemonDetailViewController {
-            destination.pokemonCard = pokemonCards[tableView.indexPathForSelectedRow!.row]
+            destination.pokemonCard = filteredPokemonCards[tableView.indexPathForSelectedRow!.row]
         }
     }
     
@@ -71,12 +83,19 @@ class PokemonViewController: UIViewController {
 extension PokemonViewController: UITableViewDelegate {}
 extension PokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        pokemonCards.count
+        filteredPokemonCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Pokemon Cell", for: indexPath)
-        cell.textLabel?.text = pokemonCards[indexPath.row].name
+        cell.textLabel?.text = filteredPokemonCards[indexPath.row].name
         return cell
+    }
+}
+
+extension PokemonViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchQuery = searchBar.text
+        print(searchQuery)
     }
 }

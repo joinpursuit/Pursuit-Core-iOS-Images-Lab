@@ -21,6 +21,10 @@
 		E11AC88423A01B7E000BDA79 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AC88323A01B7E000BDA79 /* PokemonDetailViewController.swift */; };
 		E11AC88623A01B97000BDA79 /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AC88523A01B97000BDA79 /* PokemonViewController.swift */; };
 		E11AC88823A01BAB000BDA79 /* PokemonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AC88723A01BAB000BDA79 /* PokemonCard.swift */; };
+		E150EA5123A039350057D30B /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150EA5023A039350057D30B /* RandomUser.swift */; };
+		E150EA5323A0394E0057D30B /* RandomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150EA5223A0394E0057D30B /* RandomUserCell.swift */; };
+		E150EA5523A039600057D30B /* RandomUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150EA5423A039600057D30B /* RandomUserViewController.swift */; };
+		E150EA5723A0396D0057D30B /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150EA5623A0396D0057D30B /* RandomUserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		E11AC88323A01B7E000BDA79 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		E11AC88523A01B97000BDA79 /* PokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
 		E11AC88723A01BAB000BDA79 /* PokemonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCard.swift; sourceTree = "<group>"; };
+		E150EA5023A039350057D30B /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		E150EA5223A0394E0057D30B /* RandomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserCell.swift; sourceTree = "<group>"; };
+		E150EA5423A039600057D30B /* RandomUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserViewController.swift; sourceTree = "<group>"; };
+		E150EA5623A0396D0057D30B /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,12 +104,16 @@
 				E11AC87C239FF4F4000BDA79 /* AppError.swift */,
 				E11AC87A239FF4DE000BDA79 /* NetworkHelper.swift */,
 				E11AC880239FF8F4000BDA79 /* UIImage+NetworkHandler.swift */,
+				E150EA5023A039350057D30B /* RandomUser.swift */,
+				E150EA5223A0394E0057D30B /* RandomUserCell.swift */,
+				E150EA5423A039600057D30B /* RandomUserViewController.swift */,
+				E150EA5623A0396D0057D30B /* RandomUserDetailViewController.swift */,
 				E11AC87E239FF55F000BDA79 /* XKCDComic.swift */,
 				E11AC85C239FF0CA000BDA79 /* XKCDComicViewController.swift */,
 				E11AC85E239FF0CA000BDA79 /* Main.storyboard */,
+				E11AC88723A01BAB000BDA79 /* PokemonCard.swift */,
 				E11AC88523A01B97000BDA79 /* PokemonViewController.swift */,
 				E11AC88323A01B7E000BDA79 /* PokemonDetailViewController.swift */,
-				E11AC88723A01BAB000BDA79 /* PokemonCard.swift */,
 				E11AC866239FF0CA000BDA79 /* Info.plist */,
 				E11AC88223A0193D000BDA79 /* Supporting Files */,
 			);
@@ -232,8 +244,12 @@
 				E11AC87B239FF4DE000BDA79 /* NetworkHelper.swift in Sources */,
 				E11AC88823A01BAB000BDA79 /* PokemonCard.swift in Sources */,
 				E11AC85D239FF0CA000BDA79 /* XKCDComicViewController.swift in Sources */,
+				E150EA5323A0394E0057D30B /* RandomUserCell.swift in Sources */,
 				E11AC88623A01B97000BDA79 /* PokemonViewController.swift in Sources */,
+				E150EA5723A0396D0057D30B /* RandomUserDetailViewController.swift in Sources */,
+				E150EA5523A039600057D30B /* RandomUserViewController.swift in Sources */,
 				E11AC87D239FF4F4000BDA79 /* AppError.swift in Sources */,
+				E150EA5123A039350057D30B /* RandomUser.swift in Sources */,
 				E11AC859239FF0CA000BDA79 /* AppDelegate.swift in Sources */,
 				E11AC85B239FF0CA000BDA79 /* SceneDelegate.swift in Sources */,
 				E11AC87F239FF55F000BDA79 /* XKCDComic.swift in Sources */,
