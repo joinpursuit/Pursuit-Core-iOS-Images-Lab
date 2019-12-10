@@ -14,10 +14,8 @@ struct ComicAPI{
         NetworkHelper.shared.performDataTask(with: endPointURLString) { (result) in
             switch result{
             case .failure(let appError):
-                print("fail")
                 completion(.failure(.networkClientError(appError)))
             case .success(let data):
-                print("succ")
                 do{
                     let comics = try JSONDecoder().decode(Comic.self, from: data)
                     completion(.success(comics))

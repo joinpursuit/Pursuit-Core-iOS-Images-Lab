@@ -45,11 +45,9 @@ class ViewController: UIViewController {
         ComicAPI.getComics(endPointURLString: "https://xkcd.com/\(validComicValue)/info.0.json") { (result) in
             switch result{
             case .failure(let appError):
-                print("succ1")
                 fatalError("Error: \(appError)")
             case .success(let comics):
                 self.comics = comics
-                print("fail1")
             }
         }
     }
