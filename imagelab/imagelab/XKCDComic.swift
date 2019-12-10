@@ -12,14 +12,6 @@ struct XKCDComic: Codable {
     let img: String
     let num: Int
     
-//    static private func getData(urlString: String) -> Data {
-//        NetworkHelper.shared.performDataTask(with: urlString) { result in
-//            switch result {
-//            case .failure(let appError)
-//            }
-//        }
-    
-
     static func getXKCDComic(with urlString: String, completionHandler: @escaping (Result<XKCDComic, AppError>) -> ()) {
         NetworkHelper.shared.performDataTask(with: urlString) { (result) in
             switch result {
@@ -30,5 +22,5 @@ struct XKCDComic: Codable {
                 completionHandler(.success(xkcdComic))
             }
         }
-}
+    }
 }

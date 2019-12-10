@@ -10,7 +10,6 @@ import UIKit
 
 class XKCDComicViewController: UIViewController {
     
-    //    var xkcdComic: XKCDComic!
     lazy var comicRange = 1...Int(stepper.maximumValue)
     
     @IBOutlet weak var imageView: UIImageView!
@@ -19,6 +18,7 @@ class XKCDComicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,17 +56,11 @@ class XKCDComicViewController: UIViewController {
             }
         }
     }
-    
-    private func configureStepper() {
-        self.stepper.maximumValue = self.stepper.value
-        self.stepper.minimumValue = 1.0
-        print(stepper.value)
-    }
+
     
     @IBAction func randomButtonPressed(_ sender: UIButton) {
         let random = Int.random(in: comicRange)
         loadData(urlString: "https://xkcd.com/\(random)/info.0.json")
-        print(comicRange)
         
     }
     
@@ -81,4 +75,24 @@ class XKCDComicViewController: UIViewController {
     
 }
 
-extension XKCDComicViewController: UITextFieldDelegate {}
+extension XKCDComicViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let textInput = textField.text!
+        if let num = Int(textInput) {
+            if comicRange.contains(num) {
+            loadData(urlString: "https://xkcd.com/\(num)/info.0.json")
+            }
+            else {
+                let alertController = UIAlertController(title: "Error", message: "Number out of range.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alertController, animated: true)
+            }
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "Entered invalid number", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alertController, animated: true)
+        }
+        return true
+    }
+}
