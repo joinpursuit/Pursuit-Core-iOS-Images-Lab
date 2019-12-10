@@ -8,22 +8,24 @@
 
 import Foundation
 
+//Comics
 struct Comic:Decodable {
     var num: Int
     var img: String
 }
 
+//Pokemon
 struct PokemonData: Decodable{
-    var cards: Pokemon
+    var cards: [Pokemon]
 }
 
 struct Pokemon: Decodable {
     var name: String
     var imageUrl:String
     var imageUrlHiRes: String
-    var types: [String]
+    var types: [String]?
     var set: String
-    var weaknesses: [Weaknesses]
+    var weaknesses: [Weaknesses]?
 }
 
 struct Weaknesses: Decodable {

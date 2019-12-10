@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Comics: UIViewController {
+class ComicsViewController: UIViewController {
     
     @IBOutlet weak var imageView:UIImageView!
     @IBOutlet weak var textField:UITextField!
@@ -92,7 +92,7 @@ class Comics: UIViewController {
 
 }
 
-extension Comics: UITextFieldDelegate{
+extension ComicsViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return false
         }

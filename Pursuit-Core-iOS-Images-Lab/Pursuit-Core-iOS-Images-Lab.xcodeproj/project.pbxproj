@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F16F3AF1239EFC99002FB004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3AF0239EFC99002FB004 /* AppDelegate.swift */; };
 		F16F3AF3239EFC99002FB004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3AF2239EFC99002FB004 /* SceneDelegate.swift */; };
-		F16F3AF5239EFC99002FB004 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3AF4239EFC99002FB004 /* Comics.swift */; };
+		F16F3AF5239EFC99002FB004 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3AF4239EFC99002FB004 /* ComicsViewController.swift */; };
 		F16F3AF8239EFC99002FB004 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16F3AF6239EFC99002FB004 /* Main.storyboard */; };
 		F16F3AFA239EFC9C002FB004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16F3AF9239EFC9C002FB004 /* Assets.xcassets */; };
 		F16F3AFD239EFC9C002FB004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16F3AFB239EFC9C002FB004 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,9 @@
 		F16F3B17239EFFD5002FB004 /* ImagesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3B16239EFFD5002FB004 /* ImagesAPIClient.swift */; };
 		F16F3B19239F0038002FB004 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F3B18239F0038002FB004 /* ComicModel.swift */; };
 		F19CA130239FBD69001CE210 /* PokemonCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA12F239FBD69001CE210 /* PokemonCardsViewController.swift */; };
+		F19CA13C23A030E7001CE210 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA13B23A030E7001CE210 /* PokemonDetailViewController.swift */; };
+		F19CA13E23A0324D001CE210 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA13D23A0324D001CE210 /* UIImageView+Extensions.swift */; };
+		F19CA14023A033D8001CE210 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA13F23A033D8001CE210 /* PokemonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +38,7 @@
 		F16F3AED239EFC99002FB004 /* Pursuit-Core-iOS-Images-Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuit-Core-iOS-Images-Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16F3AF0239EFC99002FB004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F16F3AF2239EFC99002FB004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F16F3AF4239EFC99002FB004 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
+		F16F3AF4239EFC99002FB004 /* ComicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
 		F16F3AF7239EFC99002FB004 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F16F3AF9239EFC9C002FB004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F16F3AFC239EFC9C002FB004 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +51,9 @@
 		F16F3B16239EFFD5002FB004 /* ImagesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesAPIClient.swift; sourceTree = "<group>"; };
 		F16F3B18239F0038002FB004 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 		F19CA12F239FBD69001CE210 /* PokemonCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardsViewController.swift; sourceTree = "<group>"; };
+		F19CA13B23A030E7001CE210 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
+		F19CA13D23A0324D001CE210 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F19CA13F23A033D8001CE210 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,11 @@
 			children = (
 				F16F3AF0239EFC99002FB004 /* AppDelegate.swift */,
 				F16F3AF2239EFC99002FB004 /* SceneDelegate.swift */,
-				F16F3AF4239EFC99002FB004 /* Comics.swift */,
+				F16F3AF4239EFC99002FB004 /* ComicsViewController.swift */,
 				F19CA12F239FBD69001CE210 /* PokemonCardsViewController.swift */,
+				F19CA13B23A030E7001CE210 /* PokemonDetailViewController.swift */,
+				F19CA13F23A033D8001CE210 /* PokemonCell.swift */,
+				F19CA13D23A0324D001CE210 /* UIImageView+Extensions.swift */,
 				F16F3B16239EFFD5002FB004 /* ImagesAPIClient.swift */,
 				F16F3B18239F0038002FB004 /* ComicModel.swift */,
 				F16F3AF6239EFC99002FB004 /* Main.storyboard */,
@@ -215,14 +224,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19CA13E23A0324D001CE210 /* UIImageView+Extensions.swift in Sources */,
 				F19CA130239FBD69001CE210 /* PokemonCardsViewController.swift in Sources */,
+				F19CA14023A033D8001CE210 /* PokemonCell.swift in Sources */,
 				F16F3B13239EFF6C002FB004 /* NetworkHelper.swift in Sources */,
 				F16F3B17239EFFD5002FB004 /* ImagesAPIClient.swift in Sources */,
-				F16F3AF5239EFC99002FB004 /* Comics.swift in Sources */,
+				F16F3AF5239EFC99002FB004 /* ComicsViewController.swift in Sources */,
 				F16F3B15239EFF83002FB004 /* AppError.swift in Sources */,
 				F16F3B19239F0038002FB004 /* ComicModel.swift in Sources */,
 				F16F3AF1239EFC99002FB004 /* AppDelegate.swift in Sources */,
 				F16F3AF3239EFC99002FB004 /* SceneDelegate.swift in Sources */,
+				F19CA13C23A030E7001CE210 /* PokemonDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

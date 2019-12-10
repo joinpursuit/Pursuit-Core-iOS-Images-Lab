@@ -28,14 +28,15 @@ struct ComicAPI{
     }
 }
 struct PokemonAPI {
-    static func getCards(endPointURLString: String, completion: @escaping (Result<PokemonData,AppError>)->()){
+    static func getCards(endPointURLString: String, completion: @escaping (Result<[Pokemon],AppError>)->()){
         NetworkHelper.shared.performDataTask(with: endPointURLString) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(.networkClientError(appError)))
             case .success(let data):
                 do{
-                    let pokemon = try JSONDecoder().decode(PokemonData.self, from: data)
+                    let pokemonData = try JSONDecoder().decode(PokemonData.self, from: data)
+                    let pokemon = pokemonData.cards
                     completion(.success(pokemon))
                 } catch{
                     completion(.failure(.decodingError(error)))
