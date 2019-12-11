@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     var comic: Comic!
     
+    
+    // we have to create variable for a number of the comic(before didSet)
     var comicNumber = 1 {
         didSet {
             updateComic(comicNumber)
@@ -26,6 +28,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
         updateComic(0)
     }
     
@@ -45,7 +48,6 @@ class ViewController: UIViewController {
     }
     
     func updateImage(for comic: Comic) {
-        
         //let urlString = "https://imgs.xkcd.com/comics/woodpecker.png"
         comicImage.setImage(with: comic.img) { (result) in
             switch result {
@@ -74,6 +76,19 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UITextFieldDelegate {
+    // this func allows use to use just numbers!
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil {
+            return true
+        } else if string == "" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // allows remove keyboard
+    // also updates comicNumber
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         comicNumber = Int(textField.text ?? "") ?? 0
         updateComic(comicNumber)
