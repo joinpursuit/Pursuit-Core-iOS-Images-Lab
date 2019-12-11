@@ -9,10 +9,14 @@
 import Foundation
 
 struct ComicAPIClient {
-    static func getComic(with urlString: String, completion: @escaping (Result<Comic, NetworkError>) -> ()) {
-        //let endpointURLString = "http://xkcd.com/614/info.0.json"
+    static func getComic(for comicNum: Int, completion: @escaping (Result<Comic, NetworkError>) -> ()) {
+       // let endpointURLString = "https://xkcd.com/\(comicNum)/info.0.json"
         
-        NetworkHelper.shared.performDataTask(with: urlString) {(result) in
+         let endpointURLString = comicNum > 0 ?
+            "https://xkcd.com/\(comicNum)/info.0.json" :
+            "https://xkcd.com/info.0.json"
+        
+        NetworkHelper.shared.performDataTask(with: endpointURLString) {(result) in
             switch result {
             case .failure(let appError):
                 completion(.failure(.networkClientError(appError)))
@@ -31,7 +35,7 @@ struct ComicAPIClient {
     }
     
     static func getMostRecentComic(completion: @escaping (Result<Comic, NetworkError>) -> ()) {
-        let endpointURLString = "http://xkcd.com/614/info.0.json"
+        let endpointURLString = "http://xkcd.com/info.0.json"
         
         NetworkHelper.shared.performDataTask(with: endpointURLString) {(result) in
             switch result {
