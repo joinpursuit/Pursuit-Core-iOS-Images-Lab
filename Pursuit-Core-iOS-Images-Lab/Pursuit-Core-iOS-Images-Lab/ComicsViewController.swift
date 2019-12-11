@@ -39,7 +39,11 @@ class ComicsViewController: UIViewController {
 
 
     func updateUI(){
-        guard let validComicValue = comicValue else { fatalError("Could not load in comicValue")
+        guard var validComicValue = comicValue else { fatalError("Could not load in comicValue")
+        }
+        
+        if validComicValue == "0"{
+            validComicValue = ""
         }
         stepper.value = Double(validComicValue) ?? 1.0
         ComicAPI.getComics(endPointURLString: "https://xkcd.com/\(validComicValue)/info.0.json") { (result) in
