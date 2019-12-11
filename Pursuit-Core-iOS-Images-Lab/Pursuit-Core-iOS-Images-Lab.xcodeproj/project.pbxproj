@@ -25,6 +25,7 @@
 		F19CA14223A0630A001CE210 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA14123A0630A001CE210 /* String+Extensions.swift */; };
 		F19CA14423A06549001CE210 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA14323A06549001CE210 /* UserViewController.swift */; };
 		F19CA14623A06626001CE210 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA14523A06626001CE210 /* UserDetailViewController.swift */; };
+		F19CA14823A13D2D001CE210 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19CA14723A13D2D001CE210 /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		F19CA14123A0630A001CE210 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F19CA14323A06549001CE210 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		F19CA14523A06626001CE210 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		F19CA14723A13D2D001CE210 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				F19CA13F23A033D8001CE210 /* PokemonCell.swift */,
 				F19CA14323A06549001CE210 /* UserViewController.swift */,
 				F19CA14523A06626001CE210 /* UserDetailViewController.swift */,
+				F19CA14723A13D2D001CE210 /* UserCell.swift */,
 				F19CA13D23A0324D001CE210 /* UIImageView+Extensions.swift */,
 				F16F3B16239EFFD5002FB004 /* ImagesAPIClient.swift */,
 				F16F3B18239F0038002FB004 /* ComicModel.swift */,
@@ -241,6 +244,7 @@
 				F16F3B13239EFF6C002FB004 /* NetworkHelper.swift in Sources */,
 				F19CA14223A0630A001CE210 /* String+Extensions.swift in Sources */,
 				F16F3B17239EFFD5002FB004 /* ImagesAPIClient.swift in Sources */,
+				F19CA14823A13D2D001CE210 /* UserCell.swift in Sources */,
 				F16F3AF5239EFC99002FB004 /* ComicsViewController.swift in Sources */,
 				F16F3B15239EFF83002FB004 /* AppError.swift in Sources */,
 				F16F3B19239F0038002FB004 /* ComicModel.swift in Sources */,
