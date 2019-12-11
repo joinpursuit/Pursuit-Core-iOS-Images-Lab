@@ -343,10 +343,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="-582.58928571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--Random User Detail View Controller-->
         <scene sceneID="J1l-3S-w3H">
             <objects>
-                <viewController id="dcq-6Z-Tp8" sceneMemberID="viewController">
+                <viewController id="dcq-6Z-Tp8" customClass="RandomUserDetailViewController" customModule="imagelab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qk5-gn-J98">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,6 +397,13 @@
                         <viewLayoutGuide key="safeArea" id="Tkj-DQ-eJp"/>
                     </view>
                     <navigationItem key="navigationItem" id="YKj-vl-ZsC"/>
+                    <connections>
+                        <outlet property="ageLabel" destination="xSf-VS-l61" id="fgI-im-kyW"/>
+                        <outlet property="imageView" destination="J14-jK-0qH" id="WMY-zp-ngg"/>
+                        <outlet property="locationLabel" destination="KM8-Kz-L9m" id="aFC-iG-UEg"/>
+                        <outlet property="nameLabel" destination="6ei-yU-Rr3" id="dCF-8d-0oD"/>
+                        <outlet property="phoneLabel" destination="FIi-8t-hGg" id="2VA-u8-qMD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqA-Bp-IuJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

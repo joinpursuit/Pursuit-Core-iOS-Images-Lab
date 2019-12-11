@@ -14,7 +14,7 @@ struct RandomUserWrapper: Codable {
 
 struct RandomUser: Codable {
     let name: Name
-    let location: Location?
+    let location: Location
     let dob: DOB
     let phone: String
     let cell: String

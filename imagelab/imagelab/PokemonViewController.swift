@@ -96,6 +96,5 @@ extension PokemonViewController: UITableViewDataSource {
 extension PokemonViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchQuery = searchBar.text
-        print(searchQuery)
     }
 }
