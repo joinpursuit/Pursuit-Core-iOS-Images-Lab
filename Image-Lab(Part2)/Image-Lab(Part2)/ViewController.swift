@@ -21,6 +21,20 @@ class ViewController: UIViewController {
         }
     }
     
+    
+//    var currentScope = SearchScope.song
+//
+//     var searchQuery = "" {
+//         didSet {
+//             switch currentScope {
+//             case .song:
+//                 songs = Song.loveSongs.filter { $0.name.lowercased().contains(searchQuery.lowercased())}
+//             case .artist:
+//                 songs = Song.loveSongs.filter { $0.artist.lowercased().contains(searchQuery.lowercased())}
+//             }
+//         }
+//     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -45,7 +59,23 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("could not segue to second VC")
+        }
+        let card = cards[indexPath.row]
+        detailVC.card = card
+    }
 }
+
+//override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//     guard let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow else {
+//         fatalError("verify class name in indentity inspector")
+//     }
+//     let country = arrayOfCountries[indexPath.row]
+//     detailVC.country = country
+// }
 
 extension ViewController: UITableViewDataSource {
     

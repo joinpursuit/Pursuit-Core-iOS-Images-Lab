@@ -9,22 +9,44 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var typesLabel: UILabel!
+    @IBOutlet weak var weaknessesLable: UILabel!
+    @IBOutlet weak var setLabel: UILabel!
+    
+    
+    var card: Cards?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateUI() {
+        guard let onePokemon = card else {
+            fatalError("could not get object from prepare for segue")
+        }
+        nameLabel.text = "Pokemon's name: \(onePokemon.name)"
+        typesLabel.text = "Pokemon's types: \(onePokemon.types?.first ?? "no types")"
+       // weaknessesLable.text = onePokemon.weaknesses
+        setLabel.text = "Pokemon's set: \(onePokemon.set)"
+        
+        imageView.setImage(with: onePokemon.imageUrl) {[weak self] result in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(systemName: "exclamationmark.triangle")
+                }
+            case .success(let pokemonImage):
+                DispatchQueue.main.async {
+                    self?.imageView.image = pokemonImage
+                }
+            }
+        }
     }
-    */
-
 }
+
+
+
