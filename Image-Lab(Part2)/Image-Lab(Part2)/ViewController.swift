@@ -22,25 +22,67 @@ class ViewController: UIViewController {
     }
     
     
-//    var currentScope = SearchScope.song
-//
-//     var searchQuery = "" {
-//         didSet {
-//             switch currentScope {
-//             case .song:
-//                 songs = Song.loveSongs.filter { $0.name.lowercased().contains(searchQuery.lowercased())}
-//             case .artist:
-//                 songs = Song.loveSongs.filter { $0.artist.lowercased().contains(searchQuery.lowercased())}
-//             }
-//         }
-//     }
+//    var searchQuery = "" {
+//        didSet {
+//            PokemonAPIClient.getPokemon(completion: {[weak self] result in
+//                switch result {
+//                case .success(let card):
+//                   // if self.searchQuery == "" {
+//                        self?.cards = card
+////                    } else {
+////                        self.arrayOfCountries = countries.filter{$0.name.lowercased().contains(self.searchQuery.lowercased())}
+//                    }
+//                case .failure(let error):
+//                    print("Encountered Error: \(error)")
+//                }
+//            })
+//        }
+//    }
+    
+//    var searchQuery = ""
+//    func searchPokemon(searchQuary: String) {
+//        PokemonAPIClient.getPokemon (completion: {[weak self] (result) in
+//            switch result {
+//            case .failure(let appError):
+//                print("error \(appError)")
+//            // TODO: alert controller
+//            case .success(let card):
+//                DispatchQueue.main.async {
+//                    if self?.searchQuery == "" {
+//                        self?.cards = card.cards
+//                    } else {
+//                        self?.cards = cards.filter{$0.name.lowercased().contains(self?.searchQuery.lowercased())}
+//                    }
+//                }
+//            }
+//        })
+//    }
+    
+   
+    
+    //    var searchQuery = "" {
+    //        didSet
+    //        PokemonAPIClient.getPokemon() { result in
+    //            switch result {
+    //            case .success(let pokemon):
+    //                if self.searchQuery == "" {
+    //                    self.cards = pokemon
+    //                } else {
+    //                    self.arrayOfCountries = countries.filter{$0.name.lowercased().contains(self.searchQuery.lowercased())}
+    //                }
+    //            case .failure(let error):
+    //                print("Encountered Error: \(error)")
+    //            }
+    //        }
+    //    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        // searchBar.delegate = self
-        // searchPokemon(searchQuary: "name")
+        searchBar.delegate = self
+        //searchPokemon(searchQuary: cards.description)
         loadPokemons()
         
         navigationItem.title = "Pokemon Cards"
@@ -67,15 +109,12 @@ class ViewController: UIViewController {
         let card = cards[indexPath.row]
         detailVC.card = card
     }
+    
+    func searchPokemon(searchQuary: String) {
+        cards = cards.filter {$0.name.first?.lowercased().contains(searchQuary.lowercased()) ?? false}
+           
+       }
 }
-
-//override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//     guard let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow else {
-//         fatalError("verify class name in indentity inspector")
-//     }
-//     let country = arrayOfCountries[indexPath.row]
-//     detailVC.country = country
-// }
 
 extension ViewController: UITableViewDataSource {
     
@@ -90,6 +129,21 @@ extension ViewController: UITableViewDataSource {
         cell.configureCell(for: card)
         
         return cell
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchText = searchBar.text else {
+            print("missing search text")
+            loadPokemons()
+            return
+        }
+        searchPokemon(searchQuary: searchText)
     }
 }
 
