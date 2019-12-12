@@ -16,8 +16,8 @@ struct Cards: Decodable {
     let name: String
     let imageUrl: String
     let imageUrlHiRes: String
-    let types: [String]
-    let weaknesses: [Weaknesses]
+    let types: [String]?
+    let weaknesses: [Weaknesses]?
     let set: String
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F02908D23A2CFF10020EA99 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F02908C23A2CFF10020EA99 /* UIImageView+Extensions.swift */; };
 		0F41124F23A1A02600874E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F41124E23A1A02600874E0E /* AppDelegate.swift */; };
 		0F41125123A1A02600874E0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F41125023A1A02600874E0E /* SceneDelegate.swift */; };
 		0F41125323A1A02600874E0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F41125223A1A02600874E0E /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F02908C23A2CFF10020EA99 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		0F41124B23A1A02600874E0E /* Image-Lab(Part2).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image-Lab(Part2).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F41124E23A1A02600874E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F41125023A1A02600874E0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				0F41125223A1A02600874E0E /* ViewController.swift */,
 				0F41125423A1A02600874E0E /* Main.storyboard */,
 				0F41127423A1A81500874E0E /* PokemonCell.swift */,
+				0F02908C23A2CFF10020EA99 /* UIImageView+Extensions.swift */,
 				0F41127623A1AB5D00874E0E /* NetworkHelper.swift */,
 				0F41127823A1ABAB00874E0E /* PokemonAPIClient.swift */,
 				0F41127223A1A41600874E0E /* PokemonModel.swift */,
@@ -218,6 +221,7 @@
 				0F41127723A1AB5D00874E0E /* NetworkHelper.swift in Sources */,
 				0F41125323A1A02600874E0E /* ViewController.swift in Sources */,
 				0F41124F23A1A02600874E0E /* AppDelegate.swift in Sources */,
+				0F02908D23A2CFF10020EA99 /* UIImageView+Extensions.swift in Sources */,
 				0F41127923A1ABAB00874E0E /* PokemonAPIClient.swift in Sources */,
 				0F41125123A1A02600874E0E /* SceneDelegate.swift in Sources */,
 				0F41127323A1A41600874E0E /* PokemonModel.swift in Sources */,

@@ -12,28 +12,32 @@ class PokemonCell: UITableViewCell {
     
     @IBOutlet weak var pokemonImage: UIImageView!
     
+    //private var urlString = ""
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //empty out the image view = set to nil
+        pokemonImage.image = nil
+    }
+    
+    
+    func configureCell(for cards: Cards) {
+        
+        pokemonImage.setImage(with: cards.imageUrlHiRes) { [weak self] result in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.pokemonImage.image = UIImage(systemName: "exclamationmark.triangle")
+                }
+            case .success(let image):
+                // coming from a background thread
+                // dispatch back to the main thread to update the UI
+                DispatchQueue.main.async {
+                    self?.pokemonImage.image = image
+                }
+            }
+        }
+    }
 }
 
-//func configureCell() {
-//    
-//}
-//    func configureCell(for country: Country) {
-//        let urlString = "https://www.countryflags.io/\(country.alpha2Code)/flat/64.png"
-//        flagImage.setImage(with: urlString) { (result) in
-//            switch result {
-//            case .failure:
-//            DispatchQueue.main.async {
-//                self.flagImage.image = UIImage(systemName: "photo.fill")
-//                }
-//            case .success(let flagImage):
-//                DispatchQueue.main.async {
-//                    self.flagImage.image = flagImage
-//                }
-//            }
-//        }
-//        countryLabel.text = country.name
-//        capitalLabel.text = "Capital is \(country.capital)"
-//        populationLabel.text = "Population is \(String(country.population)) people"
-//    }
-//    
-//}
+
