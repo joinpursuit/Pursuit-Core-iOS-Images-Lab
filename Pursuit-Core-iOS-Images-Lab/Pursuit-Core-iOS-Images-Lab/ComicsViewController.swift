@@ -22,48 +22,68 @@ class ComicsViewController: UIViewController {
         // Do any additional setup after loading the view.
         delegations()
         configureStepper()
-        updateUI()
-        comics.img = "https://www.maropost.com/wp-content/uploads/2019/06/The-Welcome-Email_06042019-01.jpg"
+        //updateUI()
+        //comics.img = "https://www.maropost.com/wp-content/uploads/2019/06/The-Welcome-Email_06042019-01.jpg"
         loadData()
     }
     
-    var comicValue:String? = "1"{
+    var comicValue:String = ""{
         didSet{
             updateUI()
-            loadData()
+            //loadData()
         }
     }
     
-    var maxComicValue = 2239
+    var maxComicValue:Int?
     var comics = Comic(num: 1, img: "")
 
 
     func updateUI(){
-        guard var validComicValue = comicValue else { fatalError("Could not load in comicValue")
-        }
         
-        if validComicValue == "0"{
-            validComicValue = ""
+        if comicValue == "0"{
+            comicValue = ""
         }
-        stepper.value = Double(validComicValue) ?? 1.0
-        ComicAPI.getComics(endPointURLString: "https://xkcd.com/\(validComicValue)/info.0.json") { (result) in
+        stepper.value = Double(comicValue) ?? 1.0
+        ComicAPI.getComics(endPointURLString: "https://xkcd.com/\(comicValue)/info.0.json") { (result) in
             switch result{
             case .failure(let appError):
                 fatalError("Error: \(appError)")
             case .success(let comics):
                 self.comics = comics
+                NetworkHelper.shared.performDataTask(with: comics.img) { (result) in
+                    switch result{
+                    case .failure(let appError):
+                        fatalError("Error: \(appError)")
+                    case .success(let data):
+                        DispatchQueue.main.async {
+                            self.stepper.value = Double(self.comicValue) ?? 0.0
+                            self.imageView.image = UIImage(data: data)
+                        }
+                    }
+                }
             }
         }
     }
     
     func loadData(){
-        NetworkHelper.shared.performDataTask(with: comics.img) { (result) in
+        ComicAPI.getComics(endPointURLString: "https://xkcd.com/info.0.json") { (result) in
             switch result{
             case .failure(let appError):
                 fatalError("Error: \(appError)")
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
+            case .success(let comics):
+                self.comics = comics
+                NetworkHelper.shared.performDataTask(with: comics.img) { (result) in
+                    switch result{
+                    case .failure(let appError):
+                        fatalError("Error: \(appError)")
+                    case .success(let data):
+                        DispatchQueue.main.async {
+                            self.stepper.value = Double(self.comicValue) ?? 0.0
+                            self.imageView.image = UIImage(data: data)
+                            self.maxComicValue = self.comics.num
+                            self.stepper.maximumValue = Double(self.comics.num)
+                        }
+                    }
                 }
             }
         }
@@ -76,7 +96,7 @@ class ComicsViewController: UIViewController {
     
     func configureStepper(){
         stepper.minimumValue = 1.0
-        stepper.maximumValue = 2239.0
+       // stepper.maximumValue = Double(maxComicValue)
         stepper.stepValue = 1.0
     }
     
@@ -90,7 +110,7 @@ class ComicsViewController: UIViewController {
     }
     
     @IBAction func randomButton(sender:UIButton){
-        comicValue = String(Int.random(in: 1...2239))
+        comicValue = String(Int.random(in: 1...maxComicValue!))
     }
 
 
@@ -108,8 +128,11 @@ extension ComicsViewController: UITextFieldDelegate{
         }
         
         comicValue = String(text)
-        let stringComicValueAsInt = Int(comicValue!)!
-        if stringComicValueAsInt > maxComicValue{
+        if comicValue == "0"{
+            comicValue = ""
+        }
+        let stringComicValueAsInt = Int(comicValue) ?? 0
+        if stringComicValueAsInt > maxComicValue!{
             return false
         }
         
