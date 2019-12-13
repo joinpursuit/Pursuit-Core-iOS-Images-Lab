@@ -14,6 +14,7 @@ extension UIImageView {
             switch result {
             case .failure(let appError):
                 completion(.failure(.networkClientError(appError)))
+                
             case .success(let data):
                 if let pokemonImage = UIImage(data: data) {
                     completion(.success(pokemonImage))

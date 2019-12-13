@@ -48,7 +48,7 @@ class NetworkHelper {
     }
     
     func performDataTask(with urlString: String, completion: @escaping (Result<Data, NetworkError>) -> ()) { // Generics allows you to use different type = Any Data type
-        
+//        "nil" "oogle.con"
         // creating a URL from the given String
         guard let url = URL(string: urlString) else {
             // handle bad url error case
@@ -60,7 +60,6 @@ class NetworkHelper {
         // suspended simply won't perform network request
         // this ultimatelly leads to debugging errors and time lost if
         // you don't explicitly resume() request
-        
         let dataTask = session.dataTask(with: url) {(data, response, error) in
             
             if let error = error {

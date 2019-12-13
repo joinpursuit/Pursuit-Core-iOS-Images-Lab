@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
         }
         nameLabel.text = "Pokemon's name: \(onePokemon.name)"
         typesLabel.text = "Pokemon's types: \(onePokemon.types?.first ?? "no types")"
-       // weaknessesLable.text = onePokemon.weaknesses
+        weaknessesLable.text = "Weaknesses of type: \(onePokemon.weaknesses?[0].type ?? "") and of value: \(onePokemon.weaknesses?[0].value ?? "")"
         setLabel.text = "Pokemon's set: \(onePokemon.set)"
         
         imageView.setImage(with: onePokemon.imageUrl) {[weak self] result in
@@ -48,5 +48,9 @@ class DetailViewController: UIViewController {
     }
 }
 
-
+//weaknessesLabel.text = "\(pokemon.weaknesses?[0].type ?? "") and \(pokemon.weaknesses?[0].value ?? "")"
+//
+//or
+//weaknessesLabel.text = pokemon.weaknesses?[0].type
+//in short)
 

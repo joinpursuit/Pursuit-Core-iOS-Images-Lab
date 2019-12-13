@@ -22,69 +22,20 @@ class ViewController: UIViewController {
     }
     
     
-//    var searchQuery = "" {
-//        didSet {
-//            PokemonAPIClient.getPokemon(completion: {[weak self] result in
-//                switch result {
-//                case .success(let card):
-//                   // if self.searchQuery == "" {
-//                        self?.cards = card
-////                    } else {
-////                        self.arrayOfCountries = countries.filter{$0.name.lowercased().contains(self.searchQuery.lowercased())}
-//                    }
-//                case .failure(let error):
-//                    print("Encountered Error: \(error)")
-//                }
-//            })
-//        }
-//    }
-    
-//    var searchQuery = ""
-//    func searchPokemon(searchQuary: String) {
-//        PokemonAPIClient.getPokemon (completion: {[weak self] (result) in
-//            switch result {
-//            case .failure(let appError):
-//                print("error \(appError)")
-//            // TODO: alert controller
-//            case .success(let card):
-//                DispatchQueue.main.async {
-//                    if self?.searchQuery == "" {
-//                        self?.cards = card.cards
-//                    } else {
-//                        self?.cards = cards.filter{$0.name.lowercased().contains(self?.searchQuery.lowercased())}
-//                    }
-//                }
-//            }
-//        })
-//    }
-    
-   
-    
-    //    var searchQuery = "" {
-    //        didSet
-    //        PokemonAPIClient.getPokemon() { result in
-    //            switch result {
-    //            case .success(let pokemon):
-    //                if self.searchQuery == "" {
-    //                    self.cards = pokemon
-    //                } else {
-    //                    self.arrayOfCountries = countries.filter{$0.name.lowercased().contains(self.searchQuery.lowercased())}
-    //                }
-    //            case .failure(let error):
-    //                print("Encountered Error: \(error)")
-    //            }
-    //        }
-    //    }
-    
+    var searchQuery = "" {
+        didSet {
+            searchPokemon(searchQuary: searchQuery)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadPokemons()
+        
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
         //searchPokemon(searchQuary: cards.description)
-        loadPokemons()
-        
         navigationItem.title = "Pokemon Cards"
         
     }
@@ -97,7 +48,9 @@ class ViewController: UIViewController {
                     print("error \(appError)")
                 }
             case .success(let cards):
-                self?.cards = cards.cards
+                DispatchQueue.main.async {
+                    self?.cards = cards
+                }
             }
         }
     }
@@ -111,9 +64,9 @@ class ViewController: UIViewController {
     }
     
     func searchPokemon(searchQuary: String) {
-        cards = cards.filter {$0.name.first?.lowercased().contains(searchQuary.lowercased()) ?? false}
-           
-       }
+        print(searchQuery.lowercased())
+        cards = cards.filter {$0.name.lowercased().contains(searchQuery.lowercased()) }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -133,17 +86,21 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let searchText = searchBar.text else {
+        
+        if searchText.isEmpty {
             print("missing search text")
             loadPokemons()
             return
         }
-        searchPokemon(searchQuary: searchText)
+        
+        searchQuery = searchText
+        print(searchText)
     }
 }
 
